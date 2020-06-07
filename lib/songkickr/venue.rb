@@ -1,6 +1,6 @@
 module Songkickr
   class Venue
-    attr_accessor :capacity, :display_name, :description, :id, :lat, :lng, :metro_area, :phone, :street, :uri, :website, :zip
+    attr_accessor :capacity, :city, :display_name, :description, :id, :lat, :lng, :metro_area, :phone, :street, :uri, :website, :zip
 
     def initialize(venue_hash)
       @capacity     = venue_hash["capacity"]
@@ -10,6 +10,7 @@ module Songkickr
       @lat          = venue_hash["lat"]
       @lng          = venue_hash["lng"]
       @metro_area   = Songkickr::MetroArea.new venue_hash["metroArea"] if venue_hash.include?("metroArea")
+      @city         = Songkickr::City.new venue_hash["city"] if venue_hash.include?("city")
       @phone        = venue_hash["phone"]
       @street       = venue_hash["street"]
       @uri          = venue_hash["uri"]
